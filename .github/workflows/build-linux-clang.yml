@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: "Install deps"
+        run: sudo apt-get install -y libgl1-mesa-dev
+
       - name: "Setup Clang"
         uses: egor-tensin/setup-clang@v1
 

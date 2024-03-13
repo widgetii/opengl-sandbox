@@ -15,6 +15,8 @@ jobs:
 
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgCommitId: 8eb57355a4ffb410a2e94c07b4dca2dffbee8e50
 
       - name: Run CMake with vcpkg.json manifest
         uses: lukka/run-cmake@v10
