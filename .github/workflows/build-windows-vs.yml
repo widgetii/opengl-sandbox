@@ -11,10 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Setup Visual Studio"
-        uses: egor-tensin/vs-shell@v2
+      - uses: lukka/get-cmake@latest
 
-      - name: "Build"
-        run: |
-          cmake -Bbuild
-          cmake --build build
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+
+      - name: Run CMake with vcpkg.json manifest
+        uses: lukka/run-cmake@v10
