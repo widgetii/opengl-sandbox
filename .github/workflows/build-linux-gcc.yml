@@ -1,0 +1,20 @@
+name: Linux (clang)
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Setup gcc"
+        uses: egor-tensin/setup-gcc@v1
+
+      - name: "Build"
+        run: |
+          cmake -Bbuild
+          cmake --build build
