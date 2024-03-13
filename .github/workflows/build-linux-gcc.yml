@@ -1,4 +1,4 @@
-name: Linux (clang)
+name: Linux (GCC)
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Setup gcc"
+      - name: "Setup GCC"
         uses: egor-tensin/setup-gcc@v1
 
       - name: "Build"

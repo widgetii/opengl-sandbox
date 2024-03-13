@@ -1,4 +1,4 @@
-name: Linux (clang)
+name: Linux (Clang)
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Setup clang"
+      - name: "Setup Clang"
         uses: egor-tensin/setup-clang@v1
 
       - name: "Build"
