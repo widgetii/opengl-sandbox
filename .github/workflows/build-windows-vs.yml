@@ -11,12 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: lukka/get-cmake@latest
-
-      - name: Setup vcpkg
-        uses: lukka/run-vcpkg@v11
+      - name: vcpkg build
+        id: vcpkg
+        uses: johnwason/vcpkg-action@v6
         with:
-          vcpkgGitCommitId: 8eb57355a4ffb410a2e94c07b4dca2dffbee8e50
+          manifest-dir: ${{ github.workspace }}
+          triplet: x64-windows-release
+          token: ${{ github.token }}
+          github-binarycache: true
 
-      - name: Run CMake with vcpkg.json manifest
-        uses: lukka/run-cmake@v10
+      - name: "Build"
+        run: |
+          cmake -Bbuild  -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows-release -DVCPKG_MANIFEST_MODE=OFF
+          cmake --build build

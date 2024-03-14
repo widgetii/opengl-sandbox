@@ -1,7 +1,9 @@
-#include <GLFW/glfw3.h>
+#include <iostream>
 
 #define GL_SILENCE_DEPRECATION 1
-#include <OpenGL/OpenGL.h>
+#include "glad/glad.h"
+
+#include <GLFW/glfw3.h>
 
 int main() {
   if (!glfwInit()) {
@@ -15,6 +17,12 @@ int main() {
   }
 
   glfwMakeContextCurrent(window);
+
+  if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
+    std::cout << "Couldn't load OpenGL\n";
+    glfwTerminate();
+    return -1;
+  }
 
   while (!glfwWindowShouldClose(window)) {
     glClear(GL_COLOR_BUFFER_BIT);
