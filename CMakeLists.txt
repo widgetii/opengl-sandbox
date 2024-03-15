@@ -5,6 +5,10 @@ project(
   VERSION 1.0
   LANGUAGES CXX C)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED On)
+set(CMAKE_CXX_EXTENSIONS Off)
+
 # TODO: GL_SILENCE_DEPRECATION for MacOS
 
 # the `pkg_check_modules` function is created with this call
@@ -16,10 +20,12 @@ pkg_check_modules(GLFW3 REQUIRED IMPORTED_TARGET glfw3)
 
 add_subdirectory(glad)
 
-set(HEADERS)
+set(HEADERS include/utils.hpp)
 set(SRC src/main.cpp)
 
 add_executable(${PROJECT_NAME} ${SRC} ${HEADERS})
+
+target_include_directories(${PROJECT_NAME} PRIVATE include)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     glad
