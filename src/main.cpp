@@ -5,6 +5,7 @@
 
 #include <GLFW/glfw3.h>
 
+#include "TriangleMesh.hpp"
 #include "utils.hpp"
 
 int main() {
@@ -31,12 +32,15 @@ int main() {
   }
 
   auto shader = make_shader("shaders/s.vert", "shaders/s.frag");
+  TriangleMesh triange;
 
   glClearColor(0.25f, 0.5f, 0.75f, 1.0f);
 
   while (!glfwWindowShouldClose(window)) {
     glClear(GL_COLOR_BUFFER_BIT);
     glUseProgram(shader);
+
+    triange.draw();
 
     glfwSwapBuffers(window);
 

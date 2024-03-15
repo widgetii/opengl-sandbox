@@ -20,8 +20,15 @@ pkg_check_modules(GLFW3 REQUIRED IMPORTED_TARGET glfw3)
 
 add_subdirectory(glad)
 
-set(HEADERS include/utils.hpp)
-set(SRC src/main.cpp)
+set(HEADERS
+    include/TriangleMesh.hpp
+    include/utils.hpp
+    )
+
+set(SRC
+    src/main.cpp
+    src/TriangleMesh.cpp
+    )
 
 add_executable(${PROJECT_NAME} ${SRC} ${HEADERS})
 
