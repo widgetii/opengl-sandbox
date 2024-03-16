@@ -49,3 +49,9 @@ if(CMAKE_BUILD_TYPE MATCHES "Debug")
     BEFORE PUBLIC -fsanitize=undefined PUBLIC -fsanitize=address
   )
 endif()
+
+if(APPLE)
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        MACOSX_BUNDLE ON
+        MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/MacOSXBundleInfo.plist.in)
+endif()
