@@ -48,7 +48,10 @@ TriangleMesh::TriangleMesh() {
   glEnableVertexAttribArray(1);
 }
 
-TriangleMesh::~TriangleMesh() {}
+TriangleMesh::~TriangleMesh() {
+  glDeleteBuffers(1, &VBO);
+  glDeleteVertexArrays(1, &VAO);
+}
 
 void TriangleMesh::draw() {
   glBindVertexArray(VAO);
